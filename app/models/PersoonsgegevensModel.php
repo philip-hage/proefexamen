@@ -17,6 +17,7 @@ class PersoonsgegevensModel
                                     pers.Achternaam,
                                     pers.Tussenvoegsel,
                                     pers.IsVolwassen,
+                                    pers.DatumAangemaakt,
                                     ct.Id AS ContactId,
                                     ct.Mobiel,
                                     ct.Email,

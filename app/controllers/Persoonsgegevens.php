@@ -45,26 +45,24 @@ class Persoonsgegevens extends Controller
 
     public function update($id = null)
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $result = $this->persoonsgegevensModel->updatePersoonsGegevens($_POST);
 
-            if (!$result) {
-                echo "Het toevoegen is gelukt";
-                header("Refresh:3; url=" . URLROOT . "persoonsgegevens/persoonsGegevensOverzicht");
-            } else {
+            if ($result) {
                 echo "Het toevoegen is niet gelukt";
-                header("Refresh:3; url=" . URLROOT . "persoonsgegevens/index");
+                header("Refresh: 3; url=" . URLROOT . "/persoonsgegevens/persoonsGegevensOverzicht");
+            } else {
+                echo "Het toevoegen is gelukt";
+                header("Refresh: 3; url=" . URLROOT . "/persoonsgegevens/persoonsGegevensOverzicht");
             }
         } else {
             $row = $this->persoonsgegevensModel->getGegevensById($id);
-
             $data = [
                 'title' => 'Klant details',
                 'row' => $row
             ];
-
             $this->view('persoonsgegevens/update', $data);
         }
     }

@@ -8,7 +8,47 @@
                     Email:
                 </td>
                 <td>
-                    <input class="form-control" type="email" name="Email" value="<?php echo $data['row']->Email; ?>">
+                    <input class="form-control" type="email" name="Email" value="<?= $data['row']->Email; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Voornaam:
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="Voornaam" value="<?= $data['row']->Voornaam; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tussenvoegsel:
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="Voornaam" value="<?= $data['row']->Tussenvoegsel; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Achternaam:
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="Voornaam" value="<?= $data['row']->Achternaam; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobiel:
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="Voornaam" value="<?= $data['row']->Mobiel; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    IsVolwassen:
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="Voornaam" value="<?= $data['row']->IsVolwassen; ?>">
                 </td>
             </tr>
             <tr>

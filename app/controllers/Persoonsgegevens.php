@@ -34,6 +34,11 @@ class Persoonsgegevens extends Controller
                             <td>" . $value->IsVolwassen . "</td>    
             ";
         }
-        
+
+        $data = [
+            'title' => 'Persoonsgegevens overzicht',
+            'rows' => $rows
+        ];
+        $this->view('persoonsgegevens/overzicht', $data);
     }
 }

@@ -48,8 +48,11 @@ class PersoonsgegevensModel
         return $row;
     }
 
-    public function updaePersoonsGegevens()
+    public function updatePersoonsGegevens($post)
     {
-        
+        $this->db->query("UPDATE contact Email = :email WHERE id = :ct.Id");
+        $this->db->bind(':email', $post['Email']);
+        $this->db->bind(':ct.Id', $post['id']);
+        $this->db->execute();
     }
 }

@@ -47,17 +47,25 @@ class Persoonsgegevens extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+            $data = [
+                'id' => $id,
+                'Email' => trim($_POST['Email']),
+            ];
+
+            $this->persoonsgegevensModel->updatePersoonsGegevens($data);
+
+            header('location: ' . URLROOT . '/persoonsgegevens/persoonsGegevensOverzicht');
         }
+        $row = $this->persoonsgegevensModel->getGegevensById($id);
+
+        var_dump($row);
 
         $data = [
-            'id' => $id,
-            'voornaam' => trim($_POST['Voornaam']),
-            'tussenvoegsel' => trim($_POST['Tussenvoegsel']),
-            'achternaam' => trim($_POST['Achternaam']),
-            'mobiel' => trim($_POST['Mobiel']),
-            'email' => trim($_POST['Email']),
-            'isVolwassen' => trim($_POST['IsVolwassen']),
+            'Email' => $row->Email,
         ];
-        
+
+        $this->view('persoonsgegevens/update', $data);
     }
 }

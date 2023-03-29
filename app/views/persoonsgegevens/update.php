@@ -1,6 +1,5 @@
-<?php var_dump($data) ?>
-
 <?php require APPROOT . '/views/includes/Header.php'; ?>
+<h3 class="d-flex justify-content-left"><?= $data['title'] ?></h3>
 <form class="form-group" action="<?= URLROOT; ?>/persoonsgegevens/update" method="post">
     <table>
         <tbody>

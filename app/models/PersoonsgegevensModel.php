@@ -50,7 +50,6 @@ class PersoonsgegevensModel
 
     public function updatePersoonsGegevens($post)
     {
-        var_dump($post);
         $this->db->query("UPDATE contact SET Email = :email WHERE Id = :id");
         $this->db->bind(':id', $post['id']);
         $this->db->bind(':email', $post['Email']);

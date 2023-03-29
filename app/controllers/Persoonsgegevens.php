@@ -31,14 +31,33 @@ class Persoonsgegevens extends Controller
                             <td>" . $value->Achternaam . "</td>
                             <td>" . $value->Mobiel . "</td>
                             <td>" . $value->Email . "</td>
-                            <td>" . $value->IsVolwassen . "</td>    
+                            <td>" . $value->IsVolwassen . "</td>  
+                            <td><a href='" . URLROOT . "/persoonsgegevens/wijzigPersoonsGegevens/" . $value->PersoonId . "'>Wijzigen</a></td>  
             ";
         }
 
         $data = [
-            'title' => 'Persoonsgegevens overzicht',
+            'title' => 'Overzicht klanten',
             'rows' => $rows
         ];
         $this->view('persoonsgegevens/overzicht', $data);
+    }
+
+    public function update($id = null)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }
+
+        $data = [
+            'id' => $id,
+            'voornaam' => trim($_POST['Voornaam']),
+            'tussenvoegsel' => trim($_POST['Tussenvoegsel']),
+            'achternaam' => trim($_POST['Achternaam']),
+            'mobiel' => trim($_POST['Mobiel']),
+            'email' => trim($_POST['Email']),
+            'isVolwassen' => trim($_POST['IsVolwassen']),
+        ];
+        
     }
 }

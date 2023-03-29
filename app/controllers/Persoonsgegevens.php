@@ -32,7 +32,7 @@ class Persoonsgegevens extends Controller
                             <td>" . $value->Mobiel . "</td>
                             <td>" . $value->Email . "</td>
                             <td>" . $value->IsVolwassen . "</td>  
-                            <td><a href='" . URLROOT . "/persoonsgegevens/wijzigPersoonsGegevens/" . $value->PersoonId . "'>Wijzigen</a></td>  
+                            <td><a href='" . URLROOT . "/persoonsgegevens/update/" . $value->PersoonId . "'>Wijzigen</a></td>  
             ";
         }
 
@@ -48,22 +48,15 @@ class Persoonsgegevens extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-
-            $data = [
-                'id' => $id,
-                'Email' => trim($_POST['Email']),
-            ];
-
-            $this->persoonsgegevensModel->updatePersoonsGegevens($data);
+            $this->persoonsgegevensModel->updatePersoonsGegevens($_POST);
 
             header('location: ' . URLROOT . '/persoonsgegevens/persoonsGegevensOverzicht');
         }
         $row = $this->persoonsgegevensModel->getGegevensById($id);
 
-        var_dump($row);
-
         $data = [
-            'Email' => $row->Email,
+            'title' => 'Update klant',
+            'row' => $row
         ];
 
         $this->view('persoonsgegevens/update', $data);
